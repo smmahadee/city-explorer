@@ -6,6 +6,8 @@
 
 
 <h1>City: <?= $city->getCityWithCountry()  ?></h1>
+
+<a href="edit.php?<?php echo http_build_query(['id' => $city->id]) ?>">Edit</a>
 <table>
     <tbody>
         <tr>

@@ -65,6 +65,29 @@ class WorldCityRepository
         return $model;
     }
 
+    public function updateCityById($id, $city) {
+        $stmt = $this->pdo->prepare(
+            'UPDATE `worldcities` 
+            SET `city` = :city, 
+            `city_ascii` = :cityAscii, 
+            `country` = :country, 
+            `iso2` = :iso2, 
+            `population` = :population 
+            WHERE id = :id'
+        );
+
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':city', $city['city'], PDO::PARAM_STR);
+        $stmt->bindValue(':cityAscii', $city['cityAscii'], PDO::PARAM_STR);
+        $stmt->bindValue(':country', $city['country'], PDO::PARAM_STR);
+        $stmt->bindValue(':iso2', $city['iso2'], PDO::PARAM_STR);
+        $stmt->bindValue(':population', $city['population'], PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $this->fetchCityById($id);
+    }
+
     public function count() : int  {
         $stmt = $this->pdo->prepare('SELECT COUNT(*) as count FROM `worldcities`');
         $stmt->execute();
