@@ -11,7 +11,7 @@ function render($view, $params) {
     require __DIR__ . '/../views/pages/' . $view . '.php';
     $contents = ob_get_clean();
     
-    require __DIR__ . '/../views/layouts/main.view.php';
+    require __DIR__ . '/../views/layout/main.view.php';
 }
 
 /**
