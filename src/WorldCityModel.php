@@ -15,4 +15,13 @@ class WorldCityModel
         public string $capital,
         public int $population
     ) {}
+
+    public function getCityWithCountry() {
+        return "{$this->city} ({$this->getFlag()} $this->country) ";
+    }
+
+    public function getFlag() {
+        $iso2 = strtolower($this->iso2);
+        return mb_chr(127462 + ord($iso2[0]) - ord('a')) .  mb_chr(127462 + ord($iso2[1]) - ord('a'));
+    }
 }

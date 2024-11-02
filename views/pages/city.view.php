@@ -4,6 +4,8 @@
  */
 ?>
 
+
+<h1>City: <?= $city->getCityWithCountry()  ?></h1>
 <table>
     <tbody>
         <tr>
@@ -17,6 +19,10 @@
         <tr>
             <th>Country:</th>
             <td><?php echo e($city->country); ?></td>
+        </tr>
+        <tr>
+            <th>Flag of the Country:</th>
+            <td><?php echo e($city->getFlag()); ?></td>
         </tr>
         <tr>
             <th>ISO2 code of country:</th>

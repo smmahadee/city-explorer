@@ -7,11 +7,6 @@ $id = (int) ($_GET['id'] ?? 0);
 $worldCityRepository = new WorldCityRepository($pdo);
 $city = $worldCityRepository->fetchCityById($id);
 
-if(empty($city)){
-    header('Location: index.php');
-    die();
-}
-
 render('city.view', [
     'city' => $city,
 ]);

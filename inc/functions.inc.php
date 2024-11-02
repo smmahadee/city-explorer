@@ -14,6 +14,16 @@ function render($view, $params) {
     require __DIR__ . '/../views/layout/main.view.php';
 }
 
+function get_flag_for_country(string $iso2): string {
+    $iso2 = strtolower($iso2);
+    if (strlen($iso2) !== 2) {
+        return $iso2;
+    }
+    return mb_chr(127462 + ord($iso2[0]) - ord('a')) . 
+           mb_chr(127462 + ord($iso2[1]) - ord('a'));
+}
+
+
 /**
  * This function will generate all the letters of the alphabet as 
  * an array: 
